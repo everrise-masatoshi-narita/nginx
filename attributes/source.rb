@@ -23,6 +23,7 @@ include_attribute 'nginx::default'
 
 default['nginx']['source']['version']                 = node['nginx']['version']
 default['nginx']['source']['prefix']                  = "/opt/nginx-#{node['nginx']['source']['version']}"
+default['nginx']['source']['link']                  = "/opt/nginx"
 default['nginx']['source']['conf_path']               = "#{node['nginx']['dir']}/nginx.conf"
 default['nginx']['source']['sbin_path']               = "#{node['nginx']['source']['prefix']}/sbin/nginx"
 default['nginx']['source']['default_configure_flags'] = %W[

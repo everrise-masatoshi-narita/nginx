@@ -196,3 +196,12 @@ end
 
 node.run_state.delete('nginx_configure_flags')
 node.run_state.delete('nginx_force_recompile')
+
+# for simple access.
+link "#{node['nginx']['source']['link']}" do
+  to "#{node['nginx']['source']['prefix']}"
+    owner  'root'
+    group  'root'
+    action :create
+end
+
