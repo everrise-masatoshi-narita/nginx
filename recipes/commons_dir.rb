@@ -47,3 +47,10 @@ end
     mode  '0755'
   end
 end
+
+directory "#{node['nginx']['script_dir']}" do
+    mode   '0755'
+    owner  'root'
+    group  'root'
+    action :create
+end

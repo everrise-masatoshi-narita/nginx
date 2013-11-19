@@ -19,13 +19,6 @@
 # limitations under the License.
 #
 
-directory "#{node['nginx']['script_dir']}" do
-    mode   '0755'
-    owner  'root'
-    group  'root'
-    action :create
-end
-
 %w[nxensite nxdissite].each do |nxscript|
   template "#{node['nginx']['script_dir']}/#{nxscript}" do
     source "#{nxscript}.erb"
