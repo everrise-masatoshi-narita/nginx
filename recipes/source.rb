@@ -97,6 +97,8 @@ nginx_force_recompile = node.run_state['nginx_force_recompile']
 bash 'compile_nginx_source' do
   cwd  ::File.dirname(src_filepath)
   code <<-EOH
+    export LUAJIT_INC="/usr/local/include/luajit-2.0"
+    export LUAJIT_LIB="/usr/local/lib"
     cd nginx-#{node['nginx']['source']['version']} &&
     ./configure #{node.run_state['nginx_configure_flags'].join(" ")} &&
     make && make install
