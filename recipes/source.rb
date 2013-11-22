@@ -97,6 +97,7 @@ nginx_force_recompile = node.run_state['nginx_force_recompile']
 bash 'compile_nginx_source' do
   cwd  ::File.dirname(src_filepath)
   code <<-EOH
+    #{node.run_state['nginx_export_env']}
     cd nginx-#{node['nginx']['source']['version']} &&
     ./configure #{node.run_state['nginx_configure_flags'].join(" ")} &&
     make && make install
